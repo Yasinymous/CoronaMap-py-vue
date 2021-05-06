@@ -1,20 +1,27 @@
 <template>
+<div>
+  <div class="title">
+      <h6 class="title-font">{{ cities[0].date }}</h6>
+ </div>
   <div class="q-pa-md">
     <q-table
       class="my-sticky-header-column-table"
-      title="24-30 Nisan 2021"
-      :data.sync="data"
+      :data.sync="cities"
       :columns="columns"
       row-key="name"
       :hide-pagination="true"
       :rows-per-page-options="[0]"
-      dense/>
+      dense
+      no-data-label="Veriler Bulunamadı..." />
+      
   <div>
 </div>
   </div>
+   </div>
 </template>
 
 <script>
+
 export default {
     name:'WeekList',
     props: {
@@ -37,19 +44,22 @@ export default {
           align: 'center',
           label: 'Sayı',
           field: 'vaka',
-          sortable: true
+          sortable: true,
         }
       ],
-      data: this.cities
-    }
-  }
+      message: 'yok',
+      data: this.cities,
+      selected: [],
+    }  
+  },
 }
+
 </script>
 
 <style lang="sass">
 .my-sticky-header-column-table
   /* height or max-height is important */
-  height: 265px
+  height: 100px
 
   /* specifying max-width so the example can
     highlight the sticky column on any browser window */

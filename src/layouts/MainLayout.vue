@@ -21,11 +21,11 @@
     <q-drawer show-if-above v-model="right" side="right" bordered>
       <WeekList :cities="cities" />
        <q-separator color="blue-grey-9" />
-      <CityDetails />
+      <CityDetails :MapGetCity="MapGetCity" />
     </q-drawer>
 
     <q-page-container>
-      <Map />
+      <Map @MapToMain="mapgetCity"/>
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
@@ -34,7 +34,7 @@
           <q-avatar>
             <img src="https://cdn.iconscout.com/icon/free/png-256/stop-coronavirus-2332166-1938991.png">
           </q-avatar>
-         Corona Map{{ test }}
+         Corona Map
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
@@ -47,7 +47,8 @@ import WeekList from 'components/WeekList'
 import Map from 'components/Map'
 import CityDetails from 'components/CityDetails'
 import firebase from 'boot/firebase'
-let ref = firebase.firestore().collection('cities').orderBy('id', 'asc')
+let ref = firebase.firestore().collection('cities').orderBy('id', 'asc');
+let dbcity = firebase.firestore().collection('cities');
 export default {
   name: 'MainLayout',
   data () {
@@ -56,7 +57,7 @@ export default {
       cities: [],
       errors: [],
       dense: true,
-      text: '',
+      MapGetCity: [],
       ph: '',
     }
   },
@@ -77,7 +78,24 @@ export default {
         });
       });
     });
-  },  
+  },
+  methods: {
+    mapgetCity (arg){
+      let ref1 = dbcity.where('name', '==', arg+' ');
+      ref1.onSnapshot((querySnapshot) => {
+      this.MapGetCity = [];
+      querySnapshot.forEach((doc) => {
+        this.MapGetCity.push({
+          id: doc.data().id,
+          name: doc.data().name,
+          vaka: doc.data().vaka,
+          date: doc.data().date
+        });
+      });
+    });
+  
+    },
+  }
 }
 </script>
 

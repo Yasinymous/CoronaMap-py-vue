@@ -3,8 +3,7 @@
     <div class="il-isimleri"></div>
     <div class="title">
             <h4 class="main-title">İllere Göre Haftalık Vaka Sayısı (100 binde)</h4>
-            <h4 class="date-title">24-30 Nisan 2021</h4>
-              <p>Selected {{ city }}</p>
+            <h4 class="date-title">17-23 Nisan 2021</h4>
                    
     </div>
     <div class="svg-turkiye-haritasi">
@@ -360,10 +359,12 @@ export default {
    methods: {
       getCity (e) {
       this.city = e,
+      this.$emit('MapToMain',e);
       e.value = ''
-     }
+     },
+     
   }
-  }
+}
 </script>
 
 <style>
@@ -387,10 +388,16 @@ export default {
     .title .date-title{
         font-size: 20px;
     }
+    .map-size{
+    margin: 15px;
 }
-.map-size{
+}
+@media only screen and (min-width: 800px){
+    .map-size{
     margin: 50px;
 }
+}
+
 .svg-turkiye-haritasi {
   max-width: 1140px;
   margin: 0 auto;
