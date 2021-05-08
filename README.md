@@ -1,26 +1,6 @@
 # CoronaMap (cmap)
 
-A Quasar Framework app
+>[<img src="https://cdn.iconscout.com/icon/free/png-256/stop-coronavirus-2332166-1938991.png" width="25"/>](https://cmap-ea258.web.app) Corona Map
 
-## Install the dependencies
-```bash
-npm install
-```
+>[view project](https://cmap-ea258.web.app)
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-### Lint the files
-```bash
-npm run lint
-```
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
