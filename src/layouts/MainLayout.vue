@@ -19,13 +19,17 @@
     </q-header>
 
     <q-drawer show-if-above v-model="right" side="right" bordered>
-      <WeekList :cities="cities" />
+      <WeekList :cities="cities" @MapToMain="mapgetCity" />
        <q-separator color="blue-grey-9" />
+       <br>
+       <br>
+       <br>
       <CityDetails :MapGetCity="MapGetCity" />
     </q-drawer>
 
     <q-page-container>
       <Map @MapToMain="mapgetCity"/>
+      <CityDetails :MapGetCity="MapGetCity" />
     </q-page-container>
 
     <q-footer elevated class="bg-grey-8 text-white">
@@ -36,6 +40,9 @@
           </q-avatar>
          Corona Map
         </q-toolbar-title>
+          <q-avatar>
+         <img src="https://yasinymous.com/images/mainlogo/mainbeyaz.svg" >
+             </q-avatar>
       </q-toolbar>
     </q-footer>
 
@@ -81,7 +88,7 @@ export default {
   },
   methods: {
     mapgetCity (arg){
-      let ref1 = dbcity.where('name', '==', arg+' ');
+      let ref1 = dbcity.where('name', '==', arg);
       ref1.onSnapshot((querySnapshot) => {
       this.MapGetCity = [];
       querySnapshot.forEach((doc) => {

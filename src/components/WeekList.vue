@@ -12,14 +12,25 @@
       :hide-pagination="true"
       :rows-per-page-options="[0]"
       dense
-      no-data-label="Veriler Bulunamadı..." />
+      no-data-label="Veriler Bulunamadı...">
+    <template v-slot:body="props">
+       <q-tr  class="cursor-pointer" :props="props" v-on:click="getCity(props.row.name)" >
+          <q-td key="name" :props="props">
+            {{ props.row.name }}
+          </q-td>
+         <q-td key="vaka" :props="props">
+           {{ props.row.vaka }}    
+          </q-td>  
+        </q-tr>
+       </template>
+    </q-table>
       
   <div>
 </div>
   </div>
    </div>
 </template>
-
+  
 <script>
 
 export default {
@@ -50,12 +61,19 @@ export default {
       message: 'yok',
       data: this.cities,
       selected: [],
+      test: '',
     }  
   },
+  methods: {
+      getCity (e) {
+      this.$emit('MapToMain',e);
+      this.test = e,
+      e.value = ''
+     },    
+  }
 }
 
 </script>
-
 <style lang="sass">
 .my-sticky-header-column-table
   /* height or max-height is important */

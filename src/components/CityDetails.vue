@@ -1,9 +1,9 @@
 <template>
 <div>
   <div class="title">
-      <h6 class="title-font">{{ MapGetCity[0].name }}</h6>
+      <h4 class="title-font">{{ MapGetCity[0].name }}</h4>
  </div>
-  <div class="q-pa-md">
+  <div class="table-size q-pa-md">
  
     <q-table
       :data.sync="MapGetCity"
@@ -49,8 +49,18 @@ export default {
 .title-font{
   padding: 0px;
   margin: 0px;
-  margin-top: 15px;
 }
+.table-size{
+  text-align: justify;
+  max-width: 600px;
+  margin: auto;
+}
+@media only screen and (max-width: 800px){
+    .title .title-font{
+        font-size: 20px;
+    }
+ }
+
 </style>
 <style lang="sass">
 .my-sticky-header-column-table

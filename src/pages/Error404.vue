@@ -1,23 +1,25 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen bg-red text-white text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
-        404
+
+      <div>
+        <img src="https://yasinymous.com/images/mainlogo/mainbeyaz.svg" alt="" width="100">
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div style="font-size: 30vh">
+        404
       </div>
 
       <q-btn
         class="q-mt-xl"
         color="white"
-        text-color="blue"
+        text-color="red"
         unelevated
         to="/"
-        label="Go Home"
+        label="Anasayfaya Dön"
         no-caps
       />
+
     </div>
   </div>
 </template>
